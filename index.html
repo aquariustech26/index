@@ -1,0 +1,351 @@
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquariusTechCCTV & Soporte TI - Cotizaciones y Soluciones Tecnológicas</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070913;
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --border-glass: rgba(0, 240, 255, 0.2);
+            --electric-blue: #00f0ff;
+            --deep-blue: #0052ff;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(0, 82, 255, 0.15) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .glass-nav {
+            background: rgba(7, 9, 19, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        /* Neon & Glow Effects */
+        .text-electric {
+            color: var(--electric-blue);
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-electric {
+            background: linear-gradient(135deg, #00f0ff 0%, #0052ff 100%);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 28px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-electric:hover {
+            color: #fff;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+            transform: scale(1.03);
+        }
+
+        .btn-outline-electric {
+            border: 2px solid var(--electric-blue);
+            color: var(--electric-blue);
+            background: transparent;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 10px 26px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-electric:hover {
+            background: var(--electric-blue);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Form Styling */
+        .form-control, .form-select {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-glass);
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(15, 23, 42, 0.95);
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top glass-nav py-3">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-shield-lock-fill text-electric fs-3"></i>
+                <span>TECH<span class="text-electric">VISION</span></span>
+            </a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2 text-electric"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link text-white" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#cctv">CCTV & Seguridad</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#cotizador">Cotizador</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#soporte">Soporte</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="#cotizador" class="btn btn-electric btn-sm mt-2 mt-lg-0">Solicitar Cotización</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-5 my-5">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7">
+                    <span class="badge bg-dark border border-info text-electric px-3 py-2 rounded-pill mb-3">
+                        <i class="bi bi-broadcast me-2"></i>Seguridad & Tecnología Avanzada
+                    </span>
+                    <h1 class="display-4 fw-extrabold text-white mb-4">
+                        Protección Inteligente y <span class="text-electric">Soporte TI 24/7</span>
+                    </h1>
+                    <p class="lead text-muted mb-4 fs-5">
+                        Instalación de sistemas de videovigilancia CCTV HD/IP, infraestructura de red y soporte técnico corporativo. Cotiza tu proyecto en minutos con respuesta inmediata.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#cotizador" class="btn btn-electric fs-6">
+                            <i class="bi bi-calculator me-2"></i>Cotizar Ahora
+                        </a>
+                        <a href="https://wa.me/1234567890?text=Hola,%20necesito%20información%20sobre%20servicios%20de%20CCTV" target="_blank" class="btn btn-outline-electric fs-6">
+                            <i class="bi bi-whatsapp me-2"></i>Contacto Directo
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="glass-panel p-4 text-center floating">
+                        <div class="position-relative d-inline-block my-3">
+                            <i class="bi bi-camera-video-fill text-electric" style="font-size: 5rem;"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle"></span>
+                        </div>
+                        <h4 class="text-white mt-2">Monitoreo en Tiempo Real</h4>
+                        <p class="text-muted small mb-3">Acceso desde tu Smartphone, Tablet o PC con tecnología IP Cloud.</p>
+                        <div class="d-flex justify-content-around text-start border-top border-secondary pt-3 mt-3">
+                            <div>
+                                <small class="text-muted d-block">Resolución</small>
+                                <span class="fw-bold text-electric">4K UltraHD</span>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block">Uptime</small>
+                                <span class="fw-bold text-electric">99.9%</span>
+                            </div>
+                            <div>
+                                <small class="text-muted d-block">Garantía</small>
+                                <span class="fw-bold text-electric">24 Meses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Grid -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-white fw-bold">Nuestras Soluciones Tecnológicas</h2>
+                <p class="text-muted">Servicios integrales diseñados para empresas, comercios y hogares</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel p-4 h-100">
+                        <i class="bi bi-webcam-fill fs-1 text-electric mb-3 d-block"></i>
+                        <h4 class="text-white">Sistemas CCTV & IP</h4>
+                        <p class="text-muted">Instalación y configuración de cámaras de seguridad con visión nocturna, reconocimiento facial y detección de movimiento.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel p-4 h-100">
+                        <i class="bi bi-diagram-3-fill fs-1 text-electric mb-3 d-block"></i>
+                        <h4 class="text-white">Redes y Cableado</h4>
+                        <p class="text-muted">Diseño e instalación de infraestructura de red estructurada, Racks, Switches administrables y fibra óptica.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel p-4 h-100">
+                        <i class="bi bi-headset fs-1 text-electric mb-3 d-block"></i>
+                        <h4 class="text-white">Soporte Técnico 24/7</h4>
+                        <p class="text-muted">Mantenimiento preventivo y correctivo de servidores, computadoras y equipamiento de seguridad activa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador Interactivo -->
+    <section id="cotizador" class="py-5">
+        <div class="container">
+            <div class="glass-panel p-4 p-md-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <h2 class="text-white fw-bold mb-3">Solicita tu <span class="text-electric">Cotización Instantánea</span></h2>
+                        <p class="text-muted mb-4">Selecciona los parámetros de tu requerimiento y nuestro equipo te enviará la propuesta detallada en menos de 2 horas.</p>
+                        <ul class="list-unstyled text-muted d-flex flex-column gap-2 mb-0">
+                            <li><i class="bi bi-check-circle-fill text-electric me-2"></i>Asesoría técnica en sitio totalmente gratis</li>
+                            <li><i class="bi bi-check-circle-fill text-electric me-2"></i>Equipos homologados con garantía oficial</li>
+                            <li><i class="bi bi-check-circle-fill text-electric me-2"></i>Planes de financiamiento disponibles</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-7">
+                        <form id="quoteForm" onsubmit="event.preventDefault(); sendWhatsApp();">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Nombre Completo</label>
+                                    <input type="text" id="nombre" class="form-control" placeholder="Ej: Carlos Mendoza" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="telefono" class="form-control" placeholder="+58 412 1234567" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Tipo de Servicio</label>
+                                    <select id="servicio" class="form-select">
+                                        <option>Instalación CCTV Nuevo</option>
+                                        <option>Mantenimiento de Cámaras</option>
+                                        <option>Soporte Técnico Informático</option>
+                                        <option>Redes y Cableado Estructurado</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white">Cantidad de Cámaras / Equipos</label>
+                                    <select id="cantidad" class="form-select">
+                                        <option>1 a 4 Cámaras</option>
+                                        <option>5 a 8 Cámaras</option>
+                                        <option>9 a 16 Cámaras</option>
+                                        <option>Más de 16 (Proyecto Industrial)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white">Detalles del Proyecto</label>
+                                    <textarea id="detalles" class="form-control" rows="3" placeholder="Indica tipo de inmueble (casa, local, galpón) o requerimientos especiales..."></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-electric w-100 py-3 fs-5">
+                                        <i class="bi bi-send-fill me-2"></i>Enviar Solicitud por WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion Soporte -->
+    <section id="soporte" class="py-5">
+        <div class="container text-center">
+            <div class="glass-panel p-5">
+                <i class="bi bi-tools fs-1 text-electric mb-3 d-block"></i>
+                <h3 class="text-white fw-bold mb-3">¿Ya eres cliente y necesitas Soporte Directo?</h3>
+                <p class="text-muted mb-4 max-w-600 mx-auto">Nuestro equipo técnico atiende emergencias de seguridad y fallas de red de manera prioritaria.</p>
+                <a href="https://wa.me/1234567890?text=SOPORTE%20URGENTE:%20Necesito%20asistencia%20técnica" target="_blank" class="btn btn-outline-electric">
+                    <i class="bi bi-headset me-2"></i>Abrir Ticket de Soporte WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 border-top border-dark text-center text-muted">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 AquariusTech. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script de Integración con WhatsApp -->
+    <script>
+        function sendWhatsApp() {
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicio = document.getElementById('servicio').value;
+            const cantidad = document.getElementById('cantidad').value;
+            const detalles = document.getElementById('detalles').value;
+
+            // Reemplaza con tu número de teléfono de WhatsApp (ej: 584120000000)
+            const myNumber = "584124635767"; 
+
+            const text = `*NUEVA SOLICITUD DE COTIZACIÓN*%0A` +
+                         `*Nombre:* ${nombre}%0A` +
+                         `*Teléfono:* ${telefono}%0A` +
+                         `*Servicio:* ${servicio}%0A` +
+                         `*Escala:* ${cantidad}%0A` +
+                         `*Detalles:* ${detalles}`;
+
+            window.open(`https://wa.me/${myNumber}?text=${text}`, '_blank');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("HTML template generated successfully as index.html")
